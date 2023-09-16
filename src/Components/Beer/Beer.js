@@ -7,11 +7,11 @@ const Beer = () => {
   console.log(query);
   const [beers, setBeers] = useState([]);
   useEffect(() => {
-    const url = `https://api.punkapi.com/v2/beers?name=${query}`;
+    const url = `https://api.punkapi.com/v2/beers`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         setBeers(data);
       });
   }, [query]);
@@ -26,7 +26,7 @@ const Beer = () => {
         <div className="d-flex justify-content-between align-items-center gap-5">
           <p className="text-danger fw-bold">Show all products: {beers.length}</p>
           <div className="input-group mb-3 w-50">
-            <input type="text" placeholder="Search by name" value={query} onChange={(e) => setQuery(e.target.value)} />
+            <input type="text" placeholder="Search by name" className="form-control" value={query} onChange={(e) => setQuery(e.target.value)} />
             <button className="btn btn-danger" onClick={handleSearch}>
               Search
             </button>
